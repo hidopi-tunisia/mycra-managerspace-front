@@ -6,12 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projets.component.scss']
 })
 export class ProjetsComponent implements OnInit {
+
   constructor() { }
+
   public contentHeader: object
 
   ngOnInit(): void {
     this.contentHeader = {
-      headerTitle: 'Projets',
+      headerTitle: 'Home',
       actionButton: true,
       breadcrumb: {
         type: '',

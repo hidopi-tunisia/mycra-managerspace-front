@@ -18,8 +18,8 @@ import { coreConfig } from 'app/app-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { ContentHeaderModule } from './layout/components/content-header/content-header.module';
 import { ProjetsComponent } from './main/projets/projets.component';
-import { ContentHeaderModule } from "./layout/components/content-header/content-header.module";
 
 const appRoutes: Routes = [
   {
@@ -38,29 +38,33 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    declarations: [AppComponent, ProjetsComponent],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        RouterModule.forRoot(appRoutes, {
-            scrollPositionRestoration: 'enabled',
-            relativeLinkResolution: 'legacy'
-        }),
-        TranslateModule.forRoot(),
-        //NgBootstrap
-        NgbModule,
-        ToastrModule.forRoot(),
-        // Core modules
-        CoreModule.forRoot(coreConfig),
-        CoreCommonModule,
-        CoreSidebarModule,
-        CoreThemeCustomizerModule,
-        // App modules
-        LayoutModule,
-        SampleModule,
-        ContentHeaderModule
-    ]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes, {
+      scrollPositionRestoration: 'enabled', // Add options right here
+      relativeLinkResolution: 'legacy'
+    }),
+    TranslateModule.forRoot(),
+
+    //NgBootstrap
+    NgbModule,
+    ToastrModule.forRoot(),
+
+    // Core modules
+    CoreModule.forRoot(coreConfig),
+    CoreCommonModule,
+    CoreSidebarModule,
+    CoreThemeCustomizerModule,
+
+    // App modules
+    LayoutModule,
+    SampleModule,
+    ContentHeaderModule
+  ],
+
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

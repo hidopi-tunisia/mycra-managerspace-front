@@ -10,6 +10,7 @@ import { SampleComponent } from './sample.component';
 import { HomeComponent } from './home.component';
 import { ProjetsComponent } from '../projets/projets.component';
 import { NewProjectComponent } from '../projets/new-project/new-project.component';
+import { ProjetsModule } from '../projets/projets.module';
 
 const routes = [
   {
@@ -37,7 +38,7 @@ const routes = [
 
 @NgModule({
   declarations: [SampleComponent, HomeComponent],
-  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule],
+  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule, ProjetsModule ],
   exports: [SampleComponent, HomeComponent]
 })
 export class SampleModule {}

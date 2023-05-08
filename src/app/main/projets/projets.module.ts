@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewProjectComponent } from './new-project/new-project.component';
+import { ProjetsComponent } from './projets.component';
+import { CoreCommonModule } from '@core/common.module';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
 
 
 @NgModule({
-  declarations: [
-    NewProjectComponent
-  ],
+  declarations: [ProjetsComponent],
   imports: [
     CommonModule,
     ContentHeaderModule
-  ]
+  ],
+  exports: [ProjetsComponent]
 })
 export class ProjetsModule { }
