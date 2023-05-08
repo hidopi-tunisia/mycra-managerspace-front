@@ -40,6 +40,7 @@ export class ProjetsService implements Resolve<any> {
   getDataTableRows(): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this._httpClient.get('api/datatable-rows').subscribe((response: any) => {
+        console.log('Data Rows',this.rows = response);
         this.rows = response;
         this.onDatatablessChanged.next(this.rows);
         resolve(this.rows);

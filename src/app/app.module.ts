@@ -20,6 +20,8 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { ContentHeaderModule } from './layout/components/content-header/content-header.module';
 import { ProjetsComponent } from './main/projets/projets.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeDbService } from '@fake-db/fake-db.service';
 
 const appRoutes: Routes = [
   {

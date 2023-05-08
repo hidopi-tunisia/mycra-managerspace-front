@@ -11,6 +11,7 @@ import { HomeComponent } from './home.component';
 import { ProjetsComponent } from '../projets/projets.component';
 import { NewProjectComponent } from '../projets/new-project/new-project.component';
 import { ProjetsModule } from '../projets/projets.module';
+import { ProjetsService } from '../projets/projets.service';
 
 const routes = [
   {
@@ -26,6 +27,9 @@ const routes = [
   {
     path: 'projets',
     component: ProjetsComponent,
+    resolve: {
+      datatables: ProjetsService
+    },
     data: { animation: 'projets' }
   },
   {
