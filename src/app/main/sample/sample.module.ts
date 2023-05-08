@@ -8,6 +8,8 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 
 import { SampleComponent } from './sample.component';
 import { HomeComponent } from './home.component';
+import { ProjetsComponent } from '../projets/projets.component';
+import { NewProjectComponent } from '../projets/new-project/new-project.component';
 
 const routes = [
   {
@@ -19,7 +21,18 @@ const routes = [
     path: 'home',
     component: HomeComponent,
     data: { animation: 'home' }
+  },
+  {
+    path: 'projets',
+    component: ProjetsComponent,
+    data: { animation: 'projets' }
+  },
+  {
+    path: 'projets/new-project',
+    component: NewProjectComponent,
+    data: { animation: 'new-project' }
   }
+
 ];
 
 @NgModule({
