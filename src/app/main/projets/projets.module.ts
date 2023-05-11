@@ -21,7 +21,7 @@ import { CorePipesModule } from '@core/pipes/pipes.module';
 @NgModule({
   declarations: [ProjetsComponent],
   imports: [
-
+    CoreCommonModule,
     CommonModule,
     ContentHeaderModule,
     CoreDirectivesModule,
@@ -33,7 +33,8 @@ import { CorePipesModule } from '@core/pipes/pipes.module';
       passThruUnknownUrl: true
     }),
     CorePipesModule,
-    NgbModule
+    NgbModule,
+
   ],
   providers: [ProjetsService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
