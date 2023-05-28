@@ -1,0 +1,135 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+     <!-- Statistics card section start -->
+     <section id="statistics-card">
+      <!-- Miscellaneous Charts -->
+      <div class="row match-height">
+        
+        <div class="col-lg-3 col-sm-6 col-12" >
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">10</h2>
+                <p class="card-text">Clients</p>
+              </div>
+              <div class="avatar bg-light-primary p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="clipboard" class="font-medium-5"></i>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12" >
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">25</h2>
+                <p class="card-text">Consultants</p>
+              </div>
+              <div class="avatar bg-light-primary p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="clipboard" class="font-medium-5"></i>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12" >
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">40</h2>
+                <p class="card-text">Projets</p>
+              </div>
+              <div class="avatar bg-light-primary p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="clipboard" class="font-medium-5"></i>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12" >
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="font-weight-bolder mb-0">50%</h2>
+                <p class="card-text">CRA saisi ce mois</p>
+              </div>
+              <div class="avatar bg-light-primary p-50 m-0">
+                <div class="avatar-content">
+                  <i data-feather="clipboard" class="font-medium-5"></i>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+      </div>
+      
+      <!--/ Miscellaneous Charts -->
+ 
+  
+      </section>
+           <!-- Stats Horizontal Card -->
+
+    
+  </div>
+</div>
+
+
+
+<!-- Google Maps Marker with Tooltip Component -->
+<google-map [zoom]="markerZoom" height="400px" width="50%" [center]="markerCenter">
+  <!-- [title]="marker.title" -->
+  <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [label]="marker.label"
+    [position]="marker.position"
+    [options]="marker.options"
+    (mapClick)="openInfo(markerElem)"
+  >
+  </map-marker>
+  <map-info-window *ngFor="let marker of markers" [position]="marker.position"
+    >Hello Google Maps</map-info-window
+  >
+</google-map>
+<!--/ Google Maps Marker with Tooltip Component -->
+
+  <!-- Line Chart Starts-->
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h4 class="card-title">Statistics</h4>
+            <span class="card-subtitle text-muted">Commercial networks and enterprises</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas
+            class="line-chart-ex chartjs"
+            baseChart
+            height="400"
+            [datasets]="lineChart.datasets"
+            [chartType]="lineChart.chartType"
+            [options]="lineChart.options"
+            [labels]="lineChart.labels"
+            [plugins]="plugins"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+  <!--/ Line Chart Ends-->

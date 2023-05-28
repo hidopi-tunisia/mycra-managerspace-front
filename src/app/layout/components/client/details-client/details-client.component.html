@@ -1,0 +1,192 @@
+
+
+<ul ngbNav #nav="ngbNav" class="nav nav-pills">
+    <li ngbNavItem>
+     
+
+     
+
+      <ng-template ngbNavContent>
+
+
+        <section class="app-user-view">
+          <!-- User Card starts-->
+          <div class="row">
+            <div class="col-xl-12 col-lg-8 col-md-7">
+              <div class="card user-card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-12 d-flex flex-column justify-content-between border-container-lg">
+                      <div class="user-avatar-section">
+                        <div class="d-flex justify-content-start">
+                          <div *ngIf="data?.avatar?.length > 0; else customAvatar">
+                            <img class="img-fluid rounded" [src]="data?.avatar" height="104" width="104" alt="User avatar" />
+                          </div>
+                          <ng-template #customAvatar>
+                            
+                          </ng-template>
+                          <div class="d-flex flex-column ml-1">
+                            <div class="user-info mb-1">
+                              <h4 class="mb-0">{{ data?.responsable }}</h4>
+                              <span class="card-text">{{ data?.email }}</span>
+
+                            </div>
+                            <div class="d-flex flex-wrap">
+                              <a routerLink="/apps/user/user-edit/{{ data?._id }}" class="btn btn-primary" rippleEffect
+                                >Edit</a
+                              >
+                              <button class="btn btn-outline-danger ml-1" rippleEffect>Delete</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center user-total-numbers">
+                        <div class="d-flex align-items-center mr-2">
+                          <div class="color-box bg-light-primary">
+                            <i [data-feather]="'user'" [class]="'text-primary'"></i>
+                          </div>
+                          <div class="ml-1">
+                            <h5 class="mb-0">6</h5>
+                            <small>Nombre des consultants</small>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="color-box bg-light-success">
+                            <i [data-feather]="'folder'" [class]="'text-success'"></i>
+                          </div>
+                          <div class="ml-1">
+                            <h5 class="mb-0">{{data.projet.length}}</h5>
+                            <small>Nombres des projets associés</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 mt-2 mt-xl-0">
+                      <div class="user-info-wrapper">
+                        <div class="d-flex flex-wrap">
+                          <div class="user-info-title">
+                            <i data-feather="user" class="mr-1"></i>
+                            <span class="card-text user-info-title font-weight-bold mb-0">Responsable</span>
+                          </div>
+                          <p class="card-text mb-0">{{ data?.sexe}} {{ data?.responsable }}</p>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap my-50">
+                          <div class="user-info-title">
+                            <i data-feather="star" class="mr-1"></i>
+                            <span class="card-text user-info-title font-weight-bold mb-0">Nom Social </span>
+                          </div>
+                          <p class="card-text mb-0"> {{ data?.nomSocial }}</p>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap my-50">
+                          <div class="user-info-title">
+                            <i data-feather="map-pin" class="mr-1"></i>
+                            <span class="card-text user-info-title font-weight-bold mb-0">Ville </span>
+                          </div>
+                          <p class="card-text mb-0">{{data.ville}}</p>
+                        </div>
+                        <div class="d-flex flex-wrap my-50">
+                            <div class="user-info-title">
+                              <i data-feather="phone" class="mr-1"></i>
+                              <span class="card-text user-info-title font-weight-bold mb-0">Tel 1 </span>
+                            </div>
+                            <p class="card-text mb-0">{{data.tel1}}</p>
+                          </div>
+                          <div class="d-flex flex-wrap my-50">
+                            <div class="user-info-title">
+                              <i data-feather="phone" class="mr-1"></i>
+                              <span class="card-text user-info-title font-weight-bold mb-0">Tel 2 </span>
+                            </div>
+                            <p class="card-text mb-0">{{data.tel2}}</p>
+                          </div>
+                          <div class="d-flex flex-wrap my-50">
+                            <div class="user-info-title">
+                              <i data-feather="flag" class="mr-1"></i>
+                              <span class="card-text user-info-title font-weight-bold mb-0">Code postal </span>
+                            </div>
+                            <p class="card-text mb-0">{{data.codePostal}}</p>
+                          </div>
+                        <div class="d-flex flex-wrap">
+                          <div class="user-info-title">
+                            <i data-feather="calendar" class="mr-1"></i>
+                            <span class="card-text user-info-title font-weight-bold mb-0">Date de signature</span>
+                          </div>
+                          <p class="card-text mb-0"> {{ data?.dateSignature.year }}/{{ data?.dateSignature.month }}/{{ data?.dateSignature.day }}</p>
+                        </div>
+                        <div class="d-flex flex-wrap">
+                            <div class="user-info-title">
+                              <i data-feather="database" class="mr-1"></i>
+                              <span class="card-text user-info-title font-weight-bold mb-0">Compétences</span>
+                            </div>
+                            <p class="card-text mb-0" *ngFor="let comp of data?.competences"> {{ comp.name }}</p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          
+          
+            
+              
+            
+          
+        
+          <!-- /User Card Ends-->
+        </div>
+        </section>      
+      
+      </ng-template>
+    </li>
+
+  </ul>
+  
+  <div [ngbNavOutlet]="nav" class="mt-1"></div>
+  <div class="row" id="table-hover-row">
+    <div class="col-lg-4">
+      <div class="card">
+   
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr >
+                <th>Liste Projet</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let projet of projects ">
+                <td>{{data.projet}}</td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+   
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr >
+                <th>Liste Consultant</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let projet of projects ">
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+    
