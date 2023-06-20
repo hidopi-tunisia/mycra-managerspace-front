@@ -1,0 +1,362 @@
+
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+<!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+
+<section id="simple-validation">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        <h4 class="card-title">Modifier client</h4>
+        <div class="card-body">
+          <form class="form-horizontal" (ngSubmit)="(TDSimpleForm.form.valid)" #TDSimpleForm="ngForm">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDNom">Nom Social</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDNomRef.invalid"
+                    [(ngModel)]="client.nomSocial"
+                    #TDNomRef="ngModel"
+                    required
+                    name="TDNom"
+                    type="text"
+                    placeholder="Name"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDNomRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDNomRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+
+            
+
+              <div class="form-check form-check-inline">
+                <input [(ngModel)]="client.sexe" value="Mr" class="form-check-input" type="checkbox" name="inlineCheckbox2" value="unchecked" />
+                <label class="form-check-label" for="inlineCheckbox2">Mr*</label>
+              </div>
+            
+              <div class="form-check form-check-inline">
+                <input  value="Mme" class="form-check-input" type="checkbox" name="inlineCheckbox2" value="unchecked" />
+                <label  class="form-check-label" for="inlineCheckbox2">Mme*</label>
+              </div>
+            
+
+
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDNSiret">N Siret</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDNSiretRef.invalid"
+                    [(ngModel)]="client.nSiret"
+                    #TDNSiretRef="ngModel"
+                    required
+                    name="TDNSiret"
+                    type="text"
+                    placeholder="NaA784"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDNSiretRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDNSiretRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDResponsable">Responsable</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDResponsableRef.invalid"
+                    [(ngModel)]="client.responsable"
+                    #TDResponsableRef="ngModel"
+                    required
+  
+                    name="TDResponsable"
+                    type="text"
+                    placeholder="David Laurant"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDResponsableRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDResponsableRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDEmail">Email</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDEmailRef.invalid"
+                    [(ngModel)]="client.email"
+                    #TDEmailRef="ngModel"
+                    required
+                    email
+                    name="TDEmail"
+                    type="text"
+                    placeholder="h.d@gmail.com"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDEmailRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="!TDEmailRef.valid">email must be valid!</small>
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDAdPostal">Adresse Postale</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDAdPostalRef.invalid"
+                    [(ngModel)]="client.adressePostale"
+                    #TDAdPostalRef="ngModel"
+                    required
+                    name="TDAdPostal"
+                    type="text"
+                    placeholder="rue boulevard,23"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDAdPostalRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDAdPostalRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDTel1">Tel1 </label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDTel1Ref.invalid"
+                    [(ngModel)]="client.tel1"
+                    #TDTel1Ref="ngModel"
+                    required
+                    pattern="([^0-9]*[0-9]+)+"
+                    maxlength="8"
+                    minlength="8"
+                    name="TDTel1"
+                    type="number"
+                    placeholder="+33 125 456"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDTel1Ref.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDTel1Ref.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDTel2">Tel2 </label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDTel2Ref.invalid"
+                    [(ngModel)]="client.tel2"
+                    #TDTel2Ref="ngModel"
+                    required
+          pattern="([^0-9]*[0-9]+)+"
+                    maxlength="8"
+                    minlength="8"
+                    name="TDTel2"
+                    type="number"
+                    placeholder="+33 987 456"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDTel2Ref.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDTel2Ref.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <!-- Ville -->
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDVille">Ville</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDVilleRef.invalid"
+                    [(ngModel)]="client.ville"
+                    #TDVilleRef="ngModel"
+                    required
+                
+                    name="TDVille"
+                    type="text"
+                    placeholder="Bagneux"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDVilleRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDVilleRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <!-- Code Postale -->
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDCodePostal">Code Postale</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDCodePostalRef.invalid"
+                    [(ngModel)]="client.codePostal"
+                    #TDCodePostalRef="ngModel"
+                    required
+                 
+                    name="TDCodePostal"
+                    type="number"
+                    placeholder="1234"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDCodePostalRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDCodePostalRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <!-- Projet -->
+              <!-- Select -->
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDProjet" >Projet</label>
+                  <select
+                    [class.error]="TDSimpleForm.submitted && TDProjetRef.invalid"
+                    [(ngModel)]="client.projet"
+                    #TDProjetRef="ngModel"
+                    required
+                 
+                    name="TDProjet"
+                   [(ngModel)]="client.projet" class="form-control" >
+                    <option value="IT">IT</option>
+                    <option value="Blade Runner">Blade Runner</option>
+                    <option>Thor Ragnarok</option>
+                  </select>
+                
+                  <span *ngIf="TDSimpleForm.submitted && TDProjetRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDProjetRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span> 
+                  
+                </div>
+              </div>
+
+              <!--/ Date  --> 
+              <div class="col-sm-6">
+                <!-- Basic Date Picker -->
+                <label >Date de signature</label>
+
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="i18n Date Picker"
+                        [class.error]="TDSimpleForm.submitted && i18nDP.invalid"
+                        [(ngModel)]="client.dateSignature"
+                        ngbDatepicker
+                        #i18nDP="ngbDatepicker"
+                      />
+                
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary feather icon-calendar"
+                          (click)="i18nDP.toggle()"
+                          type="button"
+                          rippleEffect
+                        ></button>
+                        <span *ngIf="i18nDP.submitted && i18nDP.invalid" class="invalid-form">
+                          <small class="form-text text-danger" *ngIf="i18nDP.errors.required"
+                            >This field is required!</small
+                          >
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+  <!--/ Basic Date Picker -->
+              </div>
+
+              <!--/ Note -->
+
+              <div class="col-sm-6">
+                <label for="basicTextarea">Note</label>
+                <fieldset class="form-group">
+                  <textarea [(ngModel)]="client.note" class="form-control" name="basicTextarea" rows="3" placeholder="Textarea"></textarea>
+                </fieldset>
+              </div>
+
+
+             <!--/ Competences -->
+
+             <section class="multiple-select">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+             <div class="col-sm-6 col-12">
+              <label>Compétences</label>
+
+              <div class="form-group">
+                <!-- Select Custom Tag -->
+                <ng-select
+                  [items]="customTag"
+                  [addTag]="selectAddTagMethod"
+                  [hideSelected]="true"
+                  multiple="true"
+                  bindLabel="name"
+                  [(ngModel)]="client.competences" name="competences" 
+                >
+                  <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                    <span class="ng-value-label"> {{ item.name }}</span>
+                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                  </ng-template>
+                </ng-select>
+
+                <!--/ Select Custom Tag -->
+              </div>
+            </div>
+          </div></div></div></section>
+                 
+         
+    <!-- Multiple Select end -->
+
+                <!--/ Document -->
+                 <div class="col-sm-6">
+                  <label for="file-upload-multiple">Document:</label>
+                  <fieldset class="form-group">
+                <div class="custom-file">
+                  <input
+                  [(ngModel)]="client.document"
+                    type="file"
+                    required
+                    class="custom-file-input"
+                    type="file"
+                    ng2FileSelect
+                    [uploader]="uploader"
+                    multiple
+                    name="file-upload-multiple"
+                  />
+                  <label class="custom-file-label">Choose file</label>
+                </div>
+              </fieldset> 
+                </div>
+                
+            </div>
+            <button  type="submit" class="btn btn-danger" rippleEffect>Sauvgarder</button>
+          </form>
+     
+ </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+</div>
+</div>

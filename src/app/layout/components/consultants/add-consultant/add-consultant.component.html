@@ -1,0 +1,298 @@
+
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
+<section id="simple-validation">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        <h4 class="card-title">Nouveau Consultant</h4>
+      </div>
+        <div class="card-body">
+          <form class="form-horizontal" (ngSubmit)="(TDSimpleForm.form.valid)" #TDSimpleForm="ngForm">
+            <div class="form-check form-check-inline">
+              <input #mr (change)="updateSexe($event)" value="Mr" class="form-check-input" type="checkbox" name="Mr" [checked]="!check" />
+              <label class="form-check-label" for="Mr">Mr*</label>
+            </div>
+          
+            <div class="form-check form-check-inline">
+              <input  (change)="updateSexe($event)"  value="Mme" class="form-check-input" type="checkbox" name="inlineCheckbox2" [checked]="check" />
+              <label  class="form-check-label" for="inlineCheckbox2">Mme*</label>
+            </div>
+
+              <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDPoste">Poste</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDPosteRef.invalid"
+                    [(ngModel)]="consultant.poste"
+                    #TDPosteRef="ngModel"
+                    required
+                    name="TDPosteVar"
+                    type="text"
+                    placeholder="Name"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDPosteRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDPosteRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-4 col-12">
+                <div class="form-group">
+                  <label for="basicSelect">Expérience dans le poste</label>
+                  <select [(ngModel)]="consultant.experience" class="form-control" id="basicSelect">
+                    <option value="1 ans">1 ans</option>
+                    <option value="2 ans">2 ans</option>
+                    <option value="3 ans">3 ans</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Multiple Select start -->
+    
+              
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDNom">Nom</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDNomRef.invalid"
+                    [(ngModel)]="consultant.nom"
+                    #TDNomRef="ngModel"
+                    required
+                    name="TDNom"
+                    type="text"
+                    placeholder="Name"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDNomRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDNomRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDPrenom">Prénom</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDPrenomRef.invalid"
+                    [(ngModel)]="consultant.prenom"
+                    #TDPrenomRef="ngModel"
+                    required
+                    name="TDPrenom"
+                    type="text"
+                    placeholder="Prenom"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDPrenomRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDPrenomRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-control-label" for="TDUrl">LinkedIn</label>
+                <input
+                  type="text"
+                  name="TDUrl"
+                  class="form-control"
+                  [class.error]="TDUrlRef.invalid && TDSimpleForm.submitted"
+                  pattern="^(http(s)?://)?(www.)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$"
+                  placeholder="Enter valid url"
+                  required
+                  [(ngModel)]="consultant.linkedIn"
+                  #TDUrlRef="ngModel"
+                />
+                <small class="form-text text-danger" *ngIf="TDUrlRef.invalid && TDSimpleForm.submitted"
+                  >Must be a valid url!</small
+                >
+              </div>
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDEmail">Email</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDEmailRef.invalid"
+                    [(ngModel)]="consultant.email"
+                    #TDEmailRef="ngModel"
+                    required
+                    email
+                    name="TDEmail"
+                    type="text"
+                    placeholder="Email"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDEmailRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="!TDEmailRef.valid">email must be valid!</small>
+                  </span>
+                </div>
+              </div>
+        
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDTel">Tel </label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDTelRef.invalid"
+                    [(ngModel)]="consultant.tel"
+                    #TDTelRef="ngModel"
+                    required
+                    name="TDTel"
+                    pattern="[0-9]{0,8}"
+                    type="number"
+                    placeholder="Téléphone"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDTelRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDTelRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+              <!-- Code Postale -->
+              <div class="col-lg-3">
+                <div class="form-group">
+                  <label class="form-control-label" for="TDCodePostal">Code Postale</label>
+                  <input
+                    class="form-control input-md"
+                    [class.error]="TDSimpleForm.submitted && TDCodePostalRef.invalid"
+                    [(ngModel)]="consultant.codePostal"
+                    #TDCodePostalRef="ngModel"
+                    required
+                    name="TDCodePostal"
+                    type="number"
+                    placeholder="Code postal"
+                  />
+                  <span *ngIf="TDSimpleForm.submitted && TDCodePostalRef.invalid" class="invalid-form">
+                    <small class="form-text text-danger" *ngIf="TDCodePostalRef.errors.required"
+                      >This field is required!</small
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <!--/ Date  --> 
+              <div class="col-sm-6">
+                <!-- Basic Date Picker -->
+                <label >Date de Disponibilité</label>
+
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="i18n Date Picker"
+                        [(ngModel)]="consultant.dateDispo"
+                        ngbDatepicker
+                        #i18nDP="ngbDatepicker"
+                      />
+                
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary feather icon-calendar"
+                          (click)="i18nDP.toggle()"
+                          type="button"
+                          rippleEffect
+                        ></button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </form>
+
+  <!--/ Basic Date Picker -->
+              </div>
+              <!--/ Date  --> 
+              <div class="col-sm-6">
+                <!-- Basic Date Picker -->
+                <label >Date d'embauche'</label>
+
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="i18n Date Picker2"
+                        [(ngModel)]="consultant.dateEmbauche"
+                        ngbDatepicker
+                        #i18nDP2="ngbDatepicker"
+                      />
+                
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-outline-secondary feather icon-calendar"
+                          (click)="i18nDP2.toggle()"
+                          type="button"
+                          rippleEffect
+                        ></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="row">
+
+
+              <!--/ Note -->
+
+              <div class="col-sm-6">
+                <label for="basicTextarea">Note</label>
+                <fieldset class="form-group">
+                  <textarea  [(ngModel)]="consultant.note" class="form-control" id="basicTextarea" rows="3" placeholder="Textarea"></textarea>
+                </fieldset>
+              </div>
+
+
+            </div>
+            <div class="row">
+
+
+             <!--/ Competences -->
+                 
+         
+    <!-- Multiple Select end -->
+
+                <!--/ Document -->
+                 <div class="col-sm-6">
+                  <label for="file-upload-multiple">Document:</label>
+                  <fieldset class="form-group">
+                <div class="custom-file">
+                  <input
+                  [(ngModel)]="consultant.document"
+                    type="file"
+                    required
+                    class="custom-file-input"
+                    type="file"
+                    ng2FileSelect
+                    [uploader]="uploader"
+                    multiple
+                    name="file-upload-multiple"
+                  />
+                  <label class="custom-file-label">Choose file</label>
+                </div>
+              </fieldset> 
+                </div> 
+            </div>
+            -<button (click)="ajouter()" type="submit" class="btn btn-primary" rippleEffect>Submit</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+</div>

@@ -1,0 +1,65 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
+<p>Vous pouvez notifier tous vos consultants en général ou des consultants appartenant à un projet précis</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-body">
+<form class="form-horizontal" (ngSubmit)="(TDSimpleForm.form.valid)" #TDSimpleForm="ngForm">
+
+<h4>Cible :</h4>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="checked" checked />
+    <label class="form-check-label" for="inlineCheckbox1">Consultants</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="unchecked" />
+    <label class="form-check-label" for="inlineCheckbox2">Consultants qu n'ont pas encore saisi le CRA du mois en cours</label>
+  </div>
+
+
+  <div class="row">
+  <div class="col-sm-6" style="padding-top: 5%;">
+    <h4 for="basicTextarea">Message :</h4>
+    <fieldset class="form-group">
+      <textarea class="form-control" id="basicTextarea" rows="3" placeholder="Pensez à saisir votre CRA pour ce mois"></textarea>
+    </fieldset>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<button style="margin-left: 39%;" type="button" class="btn btn-primary" (click)="modalOpenVC(modalVC)" rippleEffect>
+    Envoyer
+  </button>
+  
+
+</form>
+</div>
+</div>
+</div>
+
+  <!-- Modal -->
+  <ng-template #modalVC let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalCenterTitle">Confirmation</h5>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      <p>
+        Vous voulez envoyer?
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button  type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
+        Oui
+      </button>
+      <button  type="button" class="btn btn-primary" (click)="modal.dismiss('Cross click')" rippleEffect>
+        Non
+      </button>
+    </div>
+  </ng-template>
+  <!-- / Modal -->
+  </div>
+  </div>
