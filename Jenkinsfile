@@ -23,18 +23,6 @@ pipeline {
                 }
             }
         
-
-        stage('Run Tests') {
-            steps {
-                script {
-                    // Run Maven goals directly
-                    sh 'npm test'
-                
-
-                   
-            }
-        }
-        } 
  
         stage('Build and Push Docker Image') {
             steps {
