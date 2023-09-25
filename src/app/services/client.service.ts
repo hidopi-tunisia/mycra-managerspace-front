@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ClientService {
-APIURL="http://127.0.0.1:3000/client"
+APIURL="http://backend:3000/client"
   constructor(private http:HttpClient) { }
 
   getAllClients(){

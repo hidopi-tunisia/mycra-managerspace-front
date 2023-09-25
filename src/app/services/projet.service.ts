@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProjetService {
 
-  APIURL="http://127.0.0.1:3000/projet"
+  APIURL="http://backend:3000/projet"
   constructor(private http:HttpClient) { }
 
   getAllProjets(){
