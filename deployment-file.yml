@@ -1,0 +1,31 @@
+#version de l'api kuberenetes:
+apiVersion: apps/v1
+
+#type d'objet: déploiement
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: mycra
+#spécification du déploiement  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mycraFrontend
+  template:
+    metadata:
+      labels:
+        app: mycraFrontend
+    spec:
+      containers:
+      - name: frontend
+        image: hidopi/frontend_project:v1.0
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "0.1"
+          limits:
+            memory: "512Mi"
+            cpu: "0.5"
