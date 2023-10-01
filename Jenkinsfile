@@ -46,17 +46,16 @@ pipeline {
                 }
             }
         }
-
-        /*stage('Deploy') {
+//stage de déploiement
+        stage('Deploy') {
             steps {
               script {
                 withKubeConfig([credentialsId: 'K8S', serverUrl: '']) {
-                sh ('kubectl apply -f upteck-back-deployment.yaml')
+                sh ('kubectl apply -f deployment-file.yml')
                 }}
             
-
             }
-        }*/
+        }
     }
 
     post {
