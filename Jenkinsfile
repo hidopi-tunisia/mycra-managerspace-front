@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
                  
-        DOCKER_IMAGE_NAME = "hidopi/frontend_project:v1.0"
+        DOCKER_IMAGE_NAME = "hidopi/frontend_project:v1.1"
     
     }
     stages {

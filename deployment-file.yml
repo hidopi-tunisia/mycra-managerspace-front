@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: hidopi/frontend_project:v1.0
+        image: hidopi/frontend_project:v1.1
         ports:
         - containerPort: 80
         resources:
