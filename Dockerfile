@@ -20,7 +20,7 @@ FROM nginx:1.24.0-alpine
 
 COPY --from=build /usr/src/app/dist/vuexy /usr/share/nginx/html
 
-COPY nginx_cnfg.conf /etc/nginx/conf.d/default.conf
+COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 
 #Exécution du serveur web nginx en avant plan
